@@ -20,6 +20,8 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Tables\Columns\Column;
 use Filament\Forms\Components\Field;
 
+
+
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -37,6 +39,10 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->login()
+            ->default()
+            ->path('admin')
+            ->registration()
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -61,6 +67,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                
             ])
             ->authMiddleware([
                 Authenticate::class,
